@@ -22,3 +22,30 @@ print(df.columns)
 
 print(df.isnull())
 print(df.isnull().sum())
+
+#i now want to add some columns to my dataset to help with data manipulization and to gain better insights into the dataset
+# the output will show a series of booleans depending on the below formulas
+df['home_wins'] = df['home_score'] > df['away_score']
+df['away_wins'] = df['home_score'] < df['away_score']
+df['draw'] = df['home_score'] == df['away_score']
+
+print(df.head())
+print(df.shape)
+
+#add new column for the total goals scored in the game
+df['total_goals'] = df['home_score'] + df['away_score']
+print(df.head())
+print(df.shape)
+
+# i want to isolate the year as i will use this to see how many games played per year.
+df['Month']=pd.to_datetime(df['date']).dt.month
+df['year'] = pd.to_datetime(df['date']).dt.year
+print(df.head())
+print(df.shape)
+#There are now 15 Columns in the dataset.
+#Now that i have the month and year as seperate columns i will remove the date column using a short for loop - the actual day the game was played do not concern me
+for col in df.columns:
+    if 'date' in col:
+        del df[col]
+
+print(df.head())
