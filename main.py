@@ -55,5 +55,15 @@ games_per_year = df['year'].value_counts()
 print(games_per_year.head(50))
 #from this we can see most games were played in 2019, 2008, 2011,2004 and 2000 across all tournaments
 
+#In previous steps i added columns which returned a set of boolean values against "home/away wins and draw games.
+home_wins = df[df['home_wins'] ==True].home_wins.count()
+away_wins = df[df['away_wins']==True].away_wins.count()
+draw = df[df['draw']==True].draw.count()
+print('In this dataset there are',home_wins, 'home team wins', away_wins, 'away team wins', 'and',draw, 'draw games')
 
-
+#Now i am creating a python dictionary with status (home/away/draw) and the number of games relating to each
+#this will show if playing at home is advantagous
+data = {"Status":["home_wins", "away_wins", "draw"], "result":[20511,11944,9728]}
+dataFrame = pd.DataFrame(data=data)
+dataFrame.plot.bar(x="Status", y="result", rot=70, title="Number of wins")
+plt.show(block=True)
