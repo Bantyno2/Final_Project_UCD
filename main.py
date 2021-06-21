@@ -85,4 +85,15 @@ print(drop_dup_home.shape)
 drop_dup_away = df.drop_duplicates(subset= ["away_team"])
 print(drop_dup_away.shape)
 
+#number of matches played in each year - Lets plot this using seaborn
+plt.figure(figsize=(20,8))
+sns.lineplot(games_per_year.index, games_per_year.values, color='blue')
+plt.title('Number of matches played in each year', fontsize=18)
+plt.ylabel('No of matches', fontsize=12)
+plt.xlabel('Year', fontsize=12)
+plt.show()
+
+
+
+
 
