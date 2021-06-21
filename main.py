@@ -49,3 +49,11 @@ for col in df.columns:
         del df[col]
 
 print(df.head())
+
+#games broken down per year with most games showing at the top - Given the size of the dataset i am limiting this to top 50
+games_per_year = df['year'].value_counts()
+print(games_per_year.head(50))
+#from this we can see most games were played in 2019, 2008, 2011,2004 and 2000 across all tournaments
+
+
+
