@@ -133,9 +133,9 @@ top_team_scores = df.groupby(["home_team", "away_team"])["total_goals"].sum()
 print(top_team_scores)
 
 #how has the number of participating countries changes over the course of the period 1872-2021
-country_nums=df[['year','country']]
+country_nums = df[['year', 'country']]
 country_nums = country_nums.drop_duplicates()
-country_nums_group=country_nums.groupby('year').count()
+country_nums_group = country_nums.groupby('year').count()
 print(country_nums_group.head())
 print(country_nums_group.tail())
 
@@ -147,3 +147,10 @@ plt.ylabel('country', fontsize=14)
 plt.grid(True)
 plt.show()
 
+#explore the tournaments
+print(df['tournament'].value_counts())
+
+#tournaments played - graph top 20
+sns.barplot(x=df['tournament'].value_counts().index[:20], y=df['tournament'].value_counts().values[:20])
+plt.xticks(rotation=90)
+plt.show()
