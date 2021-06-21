@@ -122,7 +122,7 @@ plt.show
 #2nd total goals per month (fig4)
 plt.figure(figsize=(20,8))
 sns.lineplot(tot_goals.index, tot_goals.values, color='blue', marker='*')
-plt.title('Number of matches and goals per month', fontsize=18)
+plt.title('Number of goals per month', fontsize=18)
 plt.ylabel('No of Goals / Matches', fontsize=12)
 plt.xlabel('Month', fontsize=12)
 plt.show
@@ -153,6 +153,7 @@ print(df['tournament'].value_counts())
 #tournaments played - graph top 20
 sns.barplot(x=df['tournament'].value_counts().index[:20], y=df['tournament'].value_counts().values[:20])
 plt.xticks(rotation=90)
+plt.title('Top 20 Tournaments')
 plt.show()
 
 #countries with most wins - using if & elif stmts
