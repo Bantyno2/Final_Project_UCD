@@ -67,3 +67,22 @@ data = {"Status":["home_wins", "away_wins", "draw"], "result":[20511,11944,9728]
 dataFrame = pd.DataFrame(data=data)
 dataFrame.plot.bar(x="Status", y="result", rot=70, title="Number of wins")
 plt.show(block=True)
+
+#indexing/slicing - using double brackets for dataframe not series
+print(df[["country"]])
+print(df[["home_team"]])
+print(df[["away_team"]])
+
+#dropping duplicates
+drop_dup_country = df.drop_duplicates(subset=['country'])
+print(drop_dup_country.shape)
+#there are 266 country locations where tournaments are held
+
+#DROP DUPLICATES HOME
+drop_dup_home = df.drop_duplicates(subset= ["home_team"])
+print(drop_dup_home.shape)
+#DROP DUPLICATES AWAY
+drop_dup_away = df.drop_duplicates(subset= ["away_team"])
+print(drop_dup_away.shape)
+
+
