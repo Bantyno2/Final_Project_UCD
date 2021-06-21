@@ -110,11 +110,40 @@ print(tot_goals)
 games_per_month = df['Month'].value_counts()
 print(games_per_month)
 #there appears to be some correlation as June also has the most games however a graph will be easier to see this
+
+# 1st games per month (fig3)
 plt.figure(figsize=(20,8))
-sns.lineplot(games_per_month.index, games_per_month.values, color='red')
-sns.lineplot(tot_goals.index, tot_goals.values, color='blue')
+sns.lineplot(games_per_month.index, games_per_month.values, color='red', marker='o')
+plt.title('Number of matches played in each month', fontsize=18)
+plt.ylabel('No of matches', fontsize=12)
+plt.xlabel('Month', fontsize=12)
+plt.show
+
+#2nd total goals per month (fig4)
+plt.figure(figsize=(20,8))
+sns.lineplot(tot_goals.index, tot_goals.values, color='blue', marker='*')
 plt.title('Number of matches and goals per month', fontsize=18)
 plt.ylabel('No of Goals / Matches', fontsize=12)
 plt.xlabel('Month', fontsize=12)
 plt.show
+
+#Explore Groupby and see the hometeam wins
+print(df.groupby("home_team")["home_wins"].sum())
+top_team_scores = df.groupby(["home_team", "away_team"])["total_goals"].sum()
+print(top_team_scores)
+
+#how has the number of participating countries changes over the course of the period 1872-2021
+country_nums=df[['year','country']]
+country_nums = country_nums.drop_duplicates()
+country_nums_group=country_nums.groupby('year').count()
+print(country_nums_group.head())
+print(country_nums_group.tail())
+
+#plot this to see across years (fig5)
+plt.plot(country_nums_group.index, country_nums_group['country'], color='green', marker='o')
+plt.title('Changes in Number of Participating Countries ', fontsize=14)
+plt.xlabel('year', fontsize=14)
+plt.ylabel('country', fontsize=14)
+plt.grid(True)
+plt.show()
 
