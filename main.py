@@ -154,3 +154,13 @@ print(df['tournament'].value_counts())
 sns.barplot(x=df['tournament'].value_counts().index[:20], y=df['tournament'].value_counts().values[:20])
 plt.xticks(rotation=90)
 plt.show()
+
+#countries with most wins - using if & elif stmts
+Country = []
+for i in  range(len(df['year'])):
+    if df['home_wins'][i] == True:
+        Country.append(df['home_team'][i])
+    elif df['away_wins'][i] == True:
+        Country.append(df['away_team'][i])
+most_wins = pd.DataFrame(Country)
+print(most_wins[0].value_counts())
