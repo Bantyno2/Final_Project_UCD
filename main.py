@@ -93,7 +93,28 @@ plt.ylabel('No of matches', fontsize=12)
 plt.xlabel('Year', fontsize=12)
 plt.show()
 
+#i want to see how many games england played at home/away - using loc function
+eng_home_games = df.loc[df['home_team']=='England']
+print(eng_home_games.head())
+print(eng_home_games.shape)
+eng_away_games = df.loc[df['away_team']=='England']
+print(eng_away_games.head())
+print(eng_away_games.shape)
+#england have played 507 home games and 515 away games
 
-
-
+# Going to look at top months for goals scored and then games played per month to see if any correlation
+#for total goals i will demonstrate the groupby function
+tot_goals = df.groupby("Month")["total_goals"].sum()
+print(tot_goals)
+#from this i can see that June has the most goals scored
+games_per_month = df['Month'].value_counts()
+print(games_per_month)
+#there appears to be some correlation as June also has the most games however a graph will be easier to see this
+plt.figure(figsize=(20,8))
+sns.lineplot(games_per_month.index, games_per_month.values, color='red')
+sns.lineplot(tot_goals.index, tot_goals.values, color='blue')
+plt.title('Number of matches and goals per month', fontsize=18)
+plt.ylabel('No of Goals / Matches', fontsize=12)
+plt.xlabel('Month', fontsize=12)
+plt.show
 
