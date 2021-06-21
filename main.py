@@ -165,3 +165,40 @@ for i in  range(len(df['year'])):
         Country.append(df['away_team'][i])
 most_wins = pd.DataFrame(Country)
 print(most_wins[0].value_counts())
+
+#look at the country column and who has hosted the most - DO A GRAPH***
+print(df["country"].value_counts())
+
+#sorting values by multiple variables in this case country and city
+print(df.sort_values(["country","city"],ascending=False))
+
+#subsetting to get all international games from 1960 onwards
+print(df[df["year"]>1960])
+
+#look at games in yr 2019/2008/2011/2004/2000
+yr_19 = df[df["year"] == 2019]
+print(yr_19)
+print(yr_19.shape)
+yr_08 = df[df["year"] == 2008]
+print(yr_08.shape)
+yr_11 = df[df["year"] == 2011]
+print(yr_11.shape)
+yr_04 = df[df["year"] == 2004]
+print(yr_04.shape)
+yr_00 = df[df["year"] == 2000]
+print(yr_00.shape)
+
+#SUBSETTING BASED ON COUNTRY AND CITY - ENGLAND/LONDON AND FRANCE/PARIS
+print(df[(df["country"]=="England") & (df["city"]=="London")])
+
+print(df[(df["country"]=="France") & (df["city"]=="Paris")])
+
+#new column added to show the cumulative total of goals resulting intotal goals fof 123k scores since 1872
+print(df["total_goals"].cumsum())
+df["goal_cum_sum"] = df["total_goals"].cumsum()
+print(df.head())
+
+
+
+
+
