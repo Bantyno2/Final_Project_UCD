@@ -197,6 +197,7 @@ print(df[(df["country"]=="France") & (df["city"]=="Paris")])
 print(df["total_goals"].cumsum())
 df["goal_cum_sum"] = df["total_goals"].cumsum()
 print(df.head())
+print(df.tail())
 
 print(df.head())
 
