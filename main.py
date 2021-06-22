@@ -166,7 +166,7 @@ for i in  range(len(df['year'])):
 most_wins = pd.DataFrame(Country)
 print(most_wins[0].value_counts())
 
-#look at the country column and who has hosted the most - DO A GRAPH***
+#look at the country column and who has hosted the most
 print(df["country"].value_counts())
 
 #sorting values by multiple variables in this case country and city
@@ -196,6 +196,8 @@ print(df[(df["country"]=="France") & (df["city"]=="Paris")])
 #new column added to show the cumulative total of goals resulting intotal goals fof 123k scores since 1872
 print(df["total_goals"].cumsum())
 df["goal_cum_sum"] = df["total_goals"].cumsum()
+print(df.head())
+
 print(df.head())
 
 
